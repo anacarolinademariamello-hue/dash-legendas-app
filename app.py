@@ -88,19 +88,21 @@ with st.sidebar:
         metrics  = load_latest_organic_metrics(ck) if ck else ""
         approved = load_approved(ck) if ck else []
 
-        tov_color  = "#d1fae5" if has_tov else "#fef3c7"
-        tov_text   = "#065f46" if has_tov else "#92400e"
+        tov_color  = "rgba(16,185,129,0.18)"  if has_tov else "rgba(245,158,11,0.15)"
+        tov_text   = "#6ee7b7"               if has_tov else "#fcd34d"
+        tov_border = "rgba(16,185,129,0.35)" if has_tov else "rgba(245,158,11,0.3)"
         tov_label  = "Tom de voz ✓" if has_tov else "Sem tom de voz"
-        met_color  = "#d1fae5" if metrics else "#fef3c7"
-        met_text   = "#065f46" if metrics else "#92400e"
+        met_color  = "rgba(16,185,129,0.18)"  if metrics else "rgba(245,158,11,0.15)"
+        met_text   = "#6ee7b7"               if metrics else "#fcd34d"
+        met_border = "rgba(16,185,129,0.35)" if metrics else "rgba(245,158,11,0.3)"
         met_label  = f"Relatório ✓ ({len(approved)} aprovadas)" if metrics else "Sem relatório"
 
         st.markdown(
             f'<div style="display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 14px;">'
-            f'<span style="background:{tov_color};color:{tov_text};font-size:.68rem;'
-            f'font-weight:700;padding:3px 9px;border-radius:20px;">{tov_label}</span>'
-            f'<span style="background:{met_color};color:{met_text};font-size:.68rem;'
-            f'font-weight:700;padding:3px 9px;border-radius:20px;">{met_label}</span>'
+            f'<span style="background:{tov_color};color:{tov_text};border:1px solid {tov_border};'
+            f'font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;">{tov_label}</span>'
+            f'<span style="background:{met_color};color:{met_text};border:1px solid {met_border};'
+            f'font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;">{met_label}</span>'
             f'</div>',
             unsafe_allow_html=True,
         )
